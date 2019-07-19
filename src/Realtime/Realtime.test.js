@@ -1,6 +1,6 @@
-import {Home} from 'Home/Home';
+import {Realtime} from 'Realtime/Realtime';
 
-describe('<Home />', () => {
+describe('<Realtime />', () => {
   it('should have atleast one test', () => {
     expect(true).toBeTruthy();
   })
