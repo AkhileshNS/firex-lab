@@ -11,7 +11,7 @@ import {derive} from 'global/functions';
 import Router from 'global/components/Router/Router';
 
 // Page Components
-import Home from 'Home/Home';
+import Realtime from 'Realtime/Realtime';
 
 const App = ({trigger, currRoute}) => {
   return <AppContainer>
@@ -19,8 +19,8 @@ const App = ({trigger, currRoute}) => {
     <Router 
       currRoute={currRoute}
       routes={[{
-        name: /^Home$/,
-        component: Home
+        name: /^Realtime$/i,
+        component: Realtime
       }]}
     />
   </AppContainer>;

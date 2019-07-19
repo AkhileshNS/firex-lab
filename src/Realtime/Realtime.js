@@ -7,17 +7,17 @@ import 'brace/mode/json';
 import 'brace/theme/github';
 
 // Local Styles
-import { HomeContainer } from 'Home/Home.styles';
+import { RealtimeContainer } from 'Realtime/Realtime.styles';
 
 // Global Functions
 import { derive } from 'global/functions';
 
-const Home = ({
+const Realtime = ({
   code = "",
   setCode = newValue => console.log(newValue)
 }) => {
   return (
-    <HomeContainer>
+    <RealtimeContainer>
       {/* <AceEditor
         value={code}
         mode="json"
@@ -35,14 +35,14 @@ const Home = ({
         showPrintMargin={false}
         style={{width: "100%"}}
       /> */}
-    </HomeContainer>
+    </RealtimeContainer>
   );
 };
 
 const mapStoresToProps = derive({
-  code: "homeStore",
-  setCode: "homeStore"
+  code: "realtimeStore",
+  setCode: "realtimeStore"
 });
 
-export { Home };
-export default inject(mapStoresToProps)(observer(Home));
+export { Realtime };
+export default inject(mapStoresToProps)(observer(Realtime));

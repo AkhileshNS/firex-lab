@@ -1,15 +1,15 @@
 import { decorate, observable, action } from "mobx";
 
-class HomeStore {
+class RealtimeStore {
   code = ""
 
   setCode = newCode => this.code = newCode;
 }
 
-decorate(HomeStore, {
+decorate(RealtimeStore, {
   code: observable,
 
   setCode: action
 });
 
-export default new HomeStore();
+export default new RealtimeStore();
