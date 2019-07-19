@@ -11,6 +11,7 @@
     "react": "^16.8.6",
     "react-ace": "^7.0.2",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.2"
   },

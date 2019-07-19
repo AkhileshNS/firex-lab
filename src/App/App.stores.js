@@ -1,7 +1,7 @@
 import appStore from 'App/App.store';
-import homeStore from 'Home/Home.store';
+import realtimeStore from 'Realtime/Realtime.store';
 
 export {
   appStore,
-  homeStore
+  realtimeStore
 }

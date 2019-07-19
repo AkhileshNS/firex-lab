@@ -10,11 +10,15 @@ import Controller from 'App/App.controller';
 import {derive} from 'global/functions';
 import Router from 'global/components/Router/Router';
 
+// Module Components
+import Appbar from './components/Appbar/Appbar';
+
 // Page Components
 import Realtime from 'Realtime/Realtime';
 
 const App = ({trigger, currRoute}) => {
   return <AppContainer>
+    <Appbar />
     {trigger ? <Controller /> : null}
     <Router 
       currRoute={currRoute}
