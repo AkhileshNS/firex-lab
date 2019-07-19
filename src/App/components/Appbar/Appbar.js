@@ -71,31 +71,31 @@ const Appbar = ({
         <p>Enter name:</p>
         <Input
           value={modal.name}
-          onChange={({ target }) => setModal({ name: target.value })}
+          onChange={({ target }) => setModal({ ...modal, name: target.value })}
           placeholder='Ex: node-chat-app'
         />
         <p>Enter apiKey:</p>
         <Input
           value={modal.apiKey}
-          onChange={({ target }) => setModal({ apiKey: target.value })}
+          onChange={({ target }) => setModal({ ...modal, apiKey: target.value })}
           placeholder='Ex: AIzaSyCMVtffHSB7kviPWco2ALXYeaYfvh18FU'
         />
         <p>Enter appId:</p>
         <Input
           value={modal.appId}
-          onChange={({ target }) => setModal({ appId: target.value })}
+          onChange={({ target }) => setModal({ ...modal, appId: target.value })}
           placeholder='Ex: 1:393088124039:web:7a3b60cc8bfc4104'
         />
         <Buttons>
           <Button
             onClick={() => {
               if (
-                modal.name === '' &&
-                modal.appId === '' &&
-                modal.apiKey === ''
+                modal.name !== '' &&
+                modal.appId !== '' &&
+                modal.apiKey !== ''
               ) {
                 setProject(modal);
-                setVisible(true);
+                setVisible(false);
               }
             }}>
             Add Project

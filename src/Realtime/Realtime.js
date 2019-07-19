@@ -6,7 +6,11 @@ import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/theme/github';
 
-// Local Styles
+// Global Functions and constants
+import { derive } from 'global/functions';
+import { themes } from 'global/constants';
+
+// Local Styles and Functions
 import {
   RealtimeContainer,
   Content,
@@ -16,10 +20,7 @@ import {
   Select,
   Editor
 } from 'Realtime/Realtime.styles';
-
-// Global Functions and constants
-import { derive } from 'global/functions';
-import { themes } from 'global/constants';
+import {getData, setData} from './Realtime.functions';
 
 themes.forEach(theme => {
   require(`brace/theme/${theme}`);
@@ -28,16 +29,35 @@ themes.forEach(theme => {
 const Realtime = ({
   code = '',
   selected = {theme: themes[0], fontSize: 14},
+  project = {name: ""},
   setCode = newValue => console.log(newValue),
   setSelected = () => console.log("Set Selected")
 }) => {
+  const manageData = async () => {
+    let res = await getData(project.getConfig(), code.path);
+    console.log(res);
+    if (res.err) {
+      return;
+    } else {
+      setCode(res);
+    }
+  }
+
   return (
     <RealtimeContainer>
       <Content>
         <Options>
-          <Input placeholder="Enter path here. Ex: '/' or '/users'" />
-          <Button>Get Data</Button>
-          <Button>Set Data</Button>
+          <Input 
+            value={code.path}
+            onChange={({target}) => setCode({path: target.value})}
+            disabled={project.name===""}
+            placeholder={project.name==="" ? "Please add a project" : "Enter path here. Ex: '/' or '/users'"} 
+          />
+          <Button onClick={manageData}>Get Data</Button>
+          <Button 
+            onClick={() => setData(project.getConfig(), code.path, code.value, code.keyInPath)}>
+              Set Data
+          </Button>
           <Select value={selected.fontSize} onChange={({target}) => setSelected({fontSize: parseInt(target.value)})}>
             {[10, 12, 14, 16, 18, 20].map(fontSize => <option key={fontSize} value={fontSize}>
               {fontSize}
@@ -51,17 +71,14 @@ const Realtime = ({
         </Options>
         <Editor>
           <AceEditor
-            value={code}
+            value={code.value}
             mode="json"
             theme={selected.theme}
-            onChange={setCode}
+            onChange={value => setCode({value})}
             fontSize={selected.fontSize}
             name="ace"
             editorProps={{$blockScrolling: true}}
             setOptions={{
-              enableBasicAutocompletion: false,
-              enableLiveAutocompletion: false,
-              enableSnippets: false,
               showLineNumbers: true,
               tabSize: 2,
             }}
@@ -77,6 +94,7 @@ const Realtime = ({
 const mapStoresToProps = derive({
   code: 'realtimeStore',
   selected: 'realtimeStore',
+  project: 'appStore',
   setCode: 'realtimeStore',
   setSelected: 'realtimeStore'
 });

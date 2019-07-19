@@ -5,13 +5,28 @@ import { decorate, observable, action } from "mobx";
 import {themes} from 'global/constants';
 
 class RealtimeStore {
-  code = ""
+  code = {
+    value: "",
+    path: "",
+    keyInPath: false
+
+  }
   selected = {
     theme: themes[0],
     fontSize: 14
   }
 
-  setCode = newCode => this.code = newCode;
+  setCode = code => {
+    if ("value" in code) {
+      this.code.value = code.value;
+    }
+    if ("path" in code) {
+      this.code.path = code.path;
+    }
+    if ("keyInPath" in code) {
+      this.code.keyInPath = code.keyInPath;
+    }
+  }
 
   setSelected = selected => {
     if ("theme" in selected) {

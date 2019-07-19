@@ -29,6 +29,7 @@ class AppStore {
   setVisible = visible => this.visible = visible;
 
   setProject = project => {
+    console.log(project);
     if ("name" in project) {
       this.project.name = project.name;
     }
