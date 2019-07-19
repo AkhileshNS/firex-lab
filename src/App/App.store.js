@@ -1,7 +1,12 @@
+// External Modules
 import { decorate, observable, action } from "mobx";
+import {isSame} from 'elegant-standard';
+
+// Global Database
+import * as db from 'global/database';
 
 class AppStore {
-  trigger = false;
+  trigger = true;
   currRoute = "Realtime";
   selected = 0;
   visible = false;
@@ -29,15 +34,21 @@ class AppStore {
   setVisible = visible => this.visible = visible;
 
   setProject = project => {
-    console.log(project);
-    if ("name" in project) {
+    let count = 0;
+    if ("name" in project && !isSame(project.name, this.project.name)) {
       this.project.name = project.name;
+      count++;
     }
-    if ("apiKey" in project) {
+    if ("apiKey" in project && !isSame(project.apiKey, this.project.apiKey)) {
       this.project.apiKey = project.apiKey;
+      count++;
     }
-    if ("appId" in project) {
+    if ("appId" in project && !isSame(project.appId, this.project.appId)) {
       this.project.appId = project.appId;
+      count++;
+    }
+    if (count===3) {
+      db.firebase.setInstance(this.project.getConfig(), this.project.name);
     }
   }
 }

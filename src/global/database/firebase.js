@@ -1,7 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-export const getInstance = config => {
-  firebase.initializeApp(config);
-  return firebase;
+let app = null;
+
+export const setInstance = (config, name) => {
+  app = firebase.initializeApp(config, name);
 }
+
+export const getInstance = () => app;

@@ -8,7 +8,7 @@ import {isUString} from 'elegant-standard';
   Adjustments
   >Path - must be lowercase and cannot contain spaces and special characters
 */
-export const getData = async (firebase, Path) => {
+export const get = async (firebase, Path) => {
   if (!isUString(Path)) {
     return {err: "Passed arguments are invalid", res: null};
   }
@@ -33,7 +33,7 @@ export const getData = async (firebase, Path) => {
   Adjustments
   >Path - must be lowercase and cannot contain spaces and special characters
 */
-export const setData = (firebase, Path, value, keyInPath, res) => {
+export const set = (firebase, Path, value, keyInPath, res) => {
   if (!isUString(Path)) {
     return {err: "Passed arguments are invalid", res: null};
   }

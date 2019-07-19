@@ -34,7 +34,7 @@ const Realtime = ({
   setSelected = () => console.log("Set Selected")
 }) => {
   const manageData = async () => {
-    let res = await getData(project.getConfig(), code.path);
+    let res = await getData(code.path);
     console.log(res);
     if (res.err) {
       return;
@@ -55,7 +55,7 @@ const Realtime = ({
           />
           <Button onClick={manageData}>Get Data</Button>
           <Button 
-            onClick={() => setData(project.getConfig(), code.path, code.value, code.keyInPath)}>
+            onClick={() => setData(code.path, code.value, code.keyInPath)}>
               Set Data
           </Button>
           <Select value={selected.fontSize} onChange={({target}) => setSelected({fontSize: parseInt(target.value)})}>
