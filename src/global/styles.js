@@ -68,6 +68,7 @@ export const Input = styled.input`
   color: ${colors.gray};
   outline: none;
   border: none;
+  transition: all 0.5s ease;
 
   :focus {
     background-color: white;
