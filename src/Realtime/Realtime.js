@@ -2,6 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import AceEditor from 'react-ace';
+import {toast} from 'react-toastify';
 
 import 'brace/mode/json';
 import 'brace/theme/github';
@@ -37,8 +38,14 @@ const Realtime = ({
     let res = await getData(code.path);
     console.log(res);
     if (res.err) {
+      toast.error("Error retrieving data at " + code.path, {
+        position: toast.POSITION.TOP_RIGHT
+      });
       return;
     } else {
+      toast.success("Successfully retrieved data at " + code.path, {
+        position: toast.POSITION.TOP_RIGHT
+      });
       setCode(res);
     }
   }
@@ -53,8 +60,9 @@ const Realtime = ({
             disabled={project.name===""}
             placeholder={project.name==="" ? "Please add a project" : "Enter path here. Ex: '/' or '/users'"} 
           />
-          <Button onClick={manageData}>Get Data</Button>
+          <Button disabled={code.path===""} onClick={manageData}>Get Data</Button>
           <Button 
+            disabled={code.value===""}
             onClick={() => setData(code.path, code.value, code.keyInPath)}>
               Set Data
           </Button>

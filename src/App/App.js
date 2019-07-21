@@ -1,6 +1,8 @@
 // External Modules
 import React from 'react';
 import {inject, observer} from 'mobx-react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Local Styles and Controller
 import { AppContainer } from 'App/App.styles';
@@ -15,6 +17,12 @@ import Appbar from './components/Appbar/Appbar';
 
 // Page Components
 import Realtime from 'Realtime/Realtime';
+
+toast.configure({
+  autoClose: 5000,
+  toastClassName: "add-border",
+  bodyClassName: "add-bigger-fonts"
+});
 
 const App = ({trigger, currRoute}) => {
   return <AppContainer>

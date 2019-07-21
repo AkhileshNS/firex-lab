@@ -87,7 +87,8 @@ const Appbar = ({
           onChange={({ target }) => setModal({ ...modal, appId: target.value })}
           placeholder='Ex: 1:393088124039:web:7a3b60cc8bfc4104'
         />
-        <p>Please note. Make sure that you have setup your firebase realtime database with public rules in order to use this tool but don't forget to set them back to ensure security</p>
+        <p>Please note. Make sure that you have setup your firebase realtime database with public rules in order to use this tool 
+          but don't forget to set them back to ensure security</p>
         <p>Also keep in mind that this tool will download all the data at the path you specify</p>
         <Buttons>
           <Button

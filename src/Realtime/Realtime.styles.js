@@ -41,6 +41,10 @@ export const Input = styled(MaterialInput)`
 
 export const Button = styled(MaterialButton)`
   margin-left: 8px;
+
+  :disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const Select = styled.select`

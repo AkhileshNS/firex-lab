@@ -28,6 +28,17 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     border: none;
   }
+
+  .add-border {
+    border-radius: 4px;
+  }
+
+  .add-bigger-fonts {
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border-radius: 4px;
+  }
 `;
 
 export const colors = {

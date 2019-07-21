@@ -33,7 +33,7 @@ export const get = async (firebase, Path) => {
   Adjustments
   >Path - must be lowercase and cannot contain spaces and special characters
 */
-export const set = (firebase, Path, value, keyInPath, res) => {
+export const set = async (firebase, Path, value, keyInPath, res) => {
   if (!isUString(Path)) {
     return {err: "Passed arguments are invalid", res: null};
   }
@@ -45,7 +45,10 @@ export const set = (firebase, Path, value, keyInPath, res) => {
     value = value[keys[keys.length-1]];
   }
 
-  firebase.database().ref(path).set(value).then(() => {
-    res("Successfully Uploaded Data");
-  });
+  try {
+    await firebase.database().ref(path).set(value)
+    return {err: null};
+  } catch (err) {
+    return {err};
+  }
 }

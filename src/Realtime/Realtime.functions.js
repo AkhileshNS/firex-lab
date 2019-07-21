@@ -1,5 +1,6 @@
 // External Modules
 import {isObject} from 'elegant-standard';
+import {toast} from 'react-toastify';
 
 // Global Database
 import * as db from 'global/database';
@@ -39,6 +40,17 @@ export const getData = async (path) => {
 export const setData = (path, value, keyInPath) => {
   if (path!=="") {
     let firebase = db.firebase.getInstance();
-    db.data.set(firebase, path, JSON.parse(value), keyInPath, status => console.log(status));
+    db.data.set(firebase, path, JSON.parse(value), keyInPath, ({err}) => {
+      if (err) {
+        console.log(err);
+        toast.error("Error uploading data at " + path, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      } else {
+        toast.success("Successfully uploaded data to " + path, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+    });
   }
 };
