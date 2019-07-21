@@ -29,6 +29,3 @@ Note. Adding the project once will store it in IndexedDB until you change to a d
 This tool is licensed under the MIT License - check the [LICENSE](https://github.com/AkhileshNS/firex-lab/blob/master/LICENSE) file for more details.
 
 We encourage you to change and alter the tool for your needs
-
-## Support
-
