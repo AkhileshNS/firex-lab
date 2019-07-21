@@ -8,7 +8,7 @@ The inspiration for this project came from the default editor that firebase prov
 
 To use it, simply go to https://firex-lab.netlify.com and on the top-right corner, click on "Add Project", then enter in your firebase project's name (a.k.a projectId), appId and apiKey into the form. The values can be taken from your firebase configuration like so :-
 
-![config](./docs/config.png)
+![config](https://github.com/AkhileshNS/firex-lab/blob/master/docs/config.png)
 
 P.S: You'll need to register a new web app on your firebase console before you receive his configuration.
 
@@ -16,11 +16,11 @@ Once you have successfully added a project, you can start using the tool. In the
 
 After entering in the path, press "Get Data" and you should see a json representation of your data, feel free to edit this data and then press "Set Data", this will then set the altered data to the realtime database
 
-![using firex-lab part 1](./docs/how to use firex-lab part 1.gif)
+![using firex-lab part 1](https://github.com/AkhileshNS/firex-lab/blob/master/docs/how%20to%20use%20firex-lab%20part%201.gif)
 
-![using firex-lab part 2](./docs/how to use firex-lab part 2.gif)
+![using firex-lab part 2](https://github.com/AkhileshNS/firex-lab/blob/master/docs/how%20to%20use%20firex-lab%20part%202.gif)
 
-![using firex-lab part 3](./docs/how to use firex-lab part 3.gif)
+![using firex-lab part 3](https://github.com/AkhileshNS/firex-lab/blob/master/docs/how%20to%20use%20firex-lab%20part%203.gif)
 
 Note. Adding the project once will store it in IndexedDB until you change to a different project so you don't have to keep re-entering this over and over again. 
 
