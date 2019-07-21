@@ -1,5 +1,7 @@
 # Firex Lab
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c7e737d1-afb2-40b9-9bdf-3d6a09e4b41f/deploy-status)](https://app.netlify.com/sites/firex-lab/deploys)
+
 The Firex Lab (literally standing for Firebase Experimental Lab) is a set of tools meant to make life a bit easier for anyone who is using firebase in his/her projects. As of right now, there is only a tool for the Firebase Realtime Database but there are plans to add tools that make using other services easier as well.
 
 ## Realtime Database Editor
