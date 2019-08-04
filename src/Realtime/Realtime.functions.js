@@ -37,20 +37,19 @@ export const getData = async (path) => {
   }
 }
 
-export const setData = (path, value, keyInPath) => {
+export const setData = async (path, value, keyInPath) => {
   if (path!=="") {
     let firebase = db.firebase.getInstance();
-    db.data.set(firebase, path, JSON.parse(value), keyInPath, ({err}) => {
-      if (err) {
-        console.log(err);
-        toast.error("Error uploading data at " + path, {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      } else {
-        toast.success("Successfully uploaded data to " + path, {
-          position: toast.POSITION.TOP_RIGHT
-        });
-      }
-    });
+    let {err} = await db.data.set(firebase, path, JSON.parse(value), keyInPath);
+    if (err) {
+      console.log(err);
+      toast.error("Error uploading data at " + path, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } else {
+      toast.success("Successfully uploaded data to " + path, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   }
 };
