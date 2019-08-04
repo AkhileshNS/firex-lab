@@ -33,7 +33,7 @@ export const get = async (firebase, Path) => {
   Adjustments
   >Path - must be lowercase and cannot contain spaces and special characters
 */
-export const set = async (firebase, Path, value, keyInPath, res) => {
+export const set = async (firebase, Path, value, keyInPath) => {
   if (!isUString(Path)) {
     return {err: "Passed arguments are invalid", res: null};
   }
